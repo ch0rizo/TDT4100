@@ -5,3 +5,4 @@ Denne mappen inneholder øvinger for TDT4100 - Objektorientert programmering vå
 | Øving                         | Tema                               |
 | ----------------------------- | ---------------------------------- |
 | [Øving 0](./oppgavetekster/oving0/README.md) | Introduksjon og oppsett av Java    |
+| [Øving 1](./oppgavetekster/oving1/README.md) | Java-syntaks og objektorientert tankegang    |
