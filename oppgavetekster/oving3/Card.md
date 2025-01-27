@@ -23,7 +23,7 @@ Konstruktør:
 Lesemetoder:
 
 - `int getCardCount()` - returnerer hvor mange Card-objekter som `CardDeck`-objektet inneholder.
-- `int getCard(int n)` - returnerer kort nr. `n` eller utløser et `IllegalArgumentException` hvis `n` ikke er gyldig. Kort nr. $0$ er det første kortet i kortstokken.
+- `Card getCard(int n)` - returnerer kort nr. `n` eller utløser et `IllegalArgumentException` hvis `n` ikke er gyldig. Kort nr. $0$ er det første kortet i kortstokken.
 
 Endringsmetode:
 
