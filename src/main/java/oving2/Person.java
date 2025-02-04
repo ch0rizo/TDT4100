@@ -14,19 +14,21 @@ public class Person {
         if (!isValidFullName(name)) {
             throw new IllegalArgumentException("Name is wrong");
         }
+        this.name = name;
+
         if (!isValidEmail(email)) {
             throw new IllegalArgumentException("Email is wrong");
         }
+        this.email = email;
+
         if (!isValidBirthday(birthday)) {
             throw new IllegalArgumentException("Birthday is wrong");
         }
+        this.birthday = birthday;
+
         if (!isValidGender(gender)) {
             throw new IllegalArgumentException("Gender is wrong");
         }
-
-        this.name = name;
-        this.email = email;
-        this.birthday = birthday;
         this.gender = gender;
     }
 
@@ -65,17 +67,16 @@ public class Person {
 
         // Checks if the name only consist of two parts, if so check if both parts is atleast two char long
         String[] parts = name.trim().split("\\s+");
-        if (parts.length != 2) {
-            return false;
-        } else if (parts[0].length() < 2 || parts[1].length() < 2) {
-            return false;
+        if (parts.length == 2) {
+            if (parts[0].length() > 2 && parts[1].length() > 2) {
+                return true;
+            }
         }
-
-        return true;
+        return false;
     }
 
     public boolean isValidEmail(String email) {
-        if (name.trim().isEmpty()) {
+        if (name.trim().isEmpty() || name == null) {
             return false;
         }
 
@@ -92,13 +93,10 @@ public class Person {
     }
     
     public static boolean isValidBirthday(Date birthday) {
-        Date todayDate = new Date();
+    Date todayDate = new Date();
 
-        if (todayDate.after(birthday)) {
-            return false;
-        }
-        return true;
-    }
+    return birthday.after(todayDate);
+}
     
     public static boolean isValidGender(char gender) {
         if (gender == 'M' || gender == 'F' || gender == '\0') {
@@ -108,27 +106,31 @@ public class Person {
     }
 
     public void setName(String name) {
-        if (isValidFullName(name)) {
-            this.name = name;
+        if (!isValidFullName(name)) {
+            throw new IllegalArgumentException("Name wrong");
         }
+        this.name = name;
     }
 
     public void setEmail(String email) {
-        if (isValidEmail(email)) {
-            this.email = email;
+        if (!isValidEmail(email)) {
+            throw new IllegalArgumentException("Email wrong");
         }
+        this.email = email;
     }
 
     public void setBirthday(Date birthday) {
         if (isValidBirthday(birthday)) {
-            this.birthday = birthday;
+            throw new IllegalArgumentException("Birthday wrong");
         }
+        this.birthday = birthday;
     }
 
     public void setGender(char gender) {
-        if (isValidGender(gender)) {
-            this.gender = gender;
+        if (!isValidGender(gender)) {
+            throw new IllegalArgumentException("Gender wrong");
         }
+        this.gender = gender;
     }
 
     @Override
@@ -138,7 +140,10 @@ public class Person {
 
     public static void main(String[] args) {
         Date today = new Date();
-        Person person = new Person("Ola Nor", "christoffer.nguyen@gmail.no", today, 'M');
+        Person person = new Person();
+        person.setName("Ola Nordmann");
         System.out.println(person.toString());
+        person.setEmail("ola.nordmann@ntnu");
+        System.out.println(person.getEmail());
     }
 }
