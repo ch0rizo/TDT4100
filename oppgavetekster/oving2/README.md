@@ -29,7 +29,7 @@ Velg minst 2 av følgende oppgaver:
 - [Innkapsling og validering av 3 eksisterende klasser](./Encapsulation.md) (Varierende)
 - [Account](./Account.md) (Lett)
 - [Person](./Person.md) (Medium)
-- [Vehicle](./Vehicle.md) (Medium)
+- [Vehicle](./Vehicle) (Medium)
 
 Oppgavene for denne øvingen skal lagres i [`ovinger/src/main/java/oving2`](../../src/main/java/oving2). Test-filene som kjøres for å teste koden ligger i [`ovinger/src/test/java/oving2`](../../src/test/java/oving2).
 

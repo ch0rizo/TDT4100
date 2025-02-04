@@ -28,11 +28,11 @@ public class StopWatch {
     }
 
     public int getLapTime() {
-
+        return 0;
     }
 
     public int getLastLapTime() {
-
+        return 0;
     }
 
     // Endringsmetoder
