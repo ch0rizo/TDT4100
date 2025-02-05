@@ -52,7 +52,7 @@ public class Person {
     }
 
 
-    public boolean isValidFullName(String name) {
+    private boolean isValidFullName(String name) {
         // That is a name and not an empty string
         if (name.trim().isEmpty()) {
             return false;
@@ -75,7 +75,7 @@ public class Person {
         return false;
     }
 
-    public boolean isValidEmail(String email) {
+    private boolean isValidEmail(String email) {
         if (name.trim().isEmpty() || name == null) {
             return false;
         }
@@ -92,13 +92,13 @@ public class Person {
         return true;
     }
     
-    public static boolean isValidBirthday(Date birthday) {
+    private static boolean isValidBirthday(Date birthday) {
     Date todayDate = new Date();
 
     return birthday.after(todayDate);
 }
     
-    public static boolean isValidGender(char gender) {
+    private static boolean isValidGender(char gender) {
         if (gender == 'M' || gender == 'F' || gender == '\0') {
             return true;
         }
