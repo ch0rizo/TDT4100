@@ -9,3 +9,4 @@ Denne mappen inneholder øvinger for TDT4100 - Objektorientert programmering vå
 | [Øving 2](./oppgavetekster/oving2/README.md) | Innkapsling og validering                 |
 | [Øving 3](./oppgavetekster/oving3/README.md) | Klasser og testing                        |
 | [Øving 4](./oppgavetekster/oving4/README.md) | Objektstrukturer                          |
+| [Øving 5](./oppgavetekster/oving5/README.md) | Grensesnitt                               |
