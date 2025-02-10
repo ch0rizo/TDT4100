@@ -1,6 +1,6 @@
 # Interface - CardContainer-oppgave
 
-Denne oppgaven handler om å lage et felles grensesnitt for `CardDeck`- og `CardHand`-klassene, laget i oppgavene [Innkapsling - Card-oppgave](../oving3/Card.md) og [Objektstrukturer - Card-oppgave del 2](../oving5/Card.md). Her skal du lage og implementere et grensenitt kalt `CardContainer`, som spesifiserer metoder for lesing av samlinger av Card-objekter.
+Denne oppgaven handler om å lage et felles grensesnitt for `CardDeck`- og `CardHand`-klassene, laget i oppgavene [Innkapsling - Card-oppgave](../oving3/Card.md) og [Objektstrukturer - Card-oppgave del 2](../oving4/Card.md). Her skal du lage og implementere et grensenitt kalt `CardContainer`, som spesifiserer metoder for lesing av samlinger av Card-objekter.
 
 ## Del 1 - CardContainer interface
 
