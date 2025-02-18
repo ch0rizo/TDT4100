@@ -1,0 +1,8 @@
+Hva er en synlighetsmodifikator?
+
+- En synlighetsmodifikator bestemmer hvilke deler av koden som har tilgang til en klasse, metode eller variabel. Brukes for å kontrollere innkapsling
+
+Hva er forskjellen på private og public og når brukes de?
+
+- Public brukes når du ønsker at en metode eller variabel skal være tilgjengelig for andre klasser, at andre klasser skal kunne endre på denne klassen
+- Private brukes når du øsnker å innkapsulere klassen. Holder metoder og variabler "usynlig" for andre klasser, slik at det bare er metoder og variabler innad i klassen som kan endre på de.

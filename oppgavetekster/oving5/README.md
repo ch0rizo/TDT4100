@@ -29,7 +29,7 @@ Filer til Twitter-oppgaven skal lagres i `src/main/java/oving5.twitter` (Altså 
 - [StringGrid](./StringGrid.md) (Vanskelig)
 - [RPNKalkulator med funksjonelle grensesnitt](./RPNCalc.md) (Vanskelig)
 
-Alle er høyst eksamensrelevante og det anbefales følgelig å ta en titt på alle sammen.
+Alle oppgavene er høyst eksamensrelevante. Vi har imidlertid valgt å trappe ned kravene for `Iterator`, så spesielt `StringGrid` går dypere i temaet enn dere kan forvente å se på eksamen.
 
 ### Del 2: Debugging
 
