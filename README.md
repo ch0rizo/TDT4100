@@ -11,3 +11,4 @@ Denne mappen inneholder øvinger for TDT4100 - Objektorientert programmering vå
 | [Øving 4](./oppgavetekster/oving4/README.md) | Objektstrukturer                          |
 | [Øving 5](./oppgavetekster/oving5/README.md) | Grensesnitt                               |
 | [Øving 6](./oppgavetekster/oving6/README.md) | Observatør-observert og delegering        |
+| [Øving 7](./oppgavetekster/oving7/README.md) | Arv og abstrakte klasser                  |
