@@ -1,6 +1,7 @@
-package oving4;
+package oving5.twitter;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 
 public class TwitterAccount {
     private String username;
@@ -113,7 +114,20 @@ public class TwitterAccount {
 
         System.out.println(jon.getTweet(1));
         System.out.println(maria.getTweet(1).getOriginalTweet());
+
+        ArrayList<TwitterAccount> accounts = new ArrayList<>();
+        accounts.add(jon);
+        accounts.add(chris);
+        accounts.add(maria);
+
+        Comparator<TwitterAccount> sortByAlph = new UserNameComparator();
+
+        System.out.println(accounts);
+        accounts.sort(sortByAlph);
         
+
+
+
         
 
         /*
