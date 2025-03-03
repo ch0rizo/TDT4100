@@ -2,10 +2,11 @@ package oving5.twitter;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.List;
 
 public class TwitterAccount {
     private String username;
-    private TwitterAccount account;
+    private ArrayList<TwitterAccount> followers;
     private ArrayList<Tweet> tweets;
     private int tweetCount = 0;
     private int reTweetCount = 0;
@@ -13,40 +14,40 @@ public class TwitterAccount {
     public TwitterAccount(String username) {
         this.username = username;
         this.tweets = new ArrayList<>();
+        this.followers = new ArrayList<>();
     }
 
     public String getUserName() {
         return username;
     }
 
+    public int getFollowerCount() {
+        return followers.size();
+    }
+
     public void follow(TwitterAccount account) {
-        if (this.account == account) {
+        if (this == account ) {
             throw new IllegalArgumentException("Du kan ikke follow deg selv!");
         }
-        this.account = account;
+        account.followers.add(this);
     }
 
     public void unfollow(TwitterAccount account) {
         if (this == account) {
             throw new IllegalArgumentException("Du kan ikke unfollowe deg selv!");
         }
-        if (this.account == account) {
-            this.account = null;
+        else if (!account.followers.contains(this)) {
+            throw new IllegalArgumentException("Du følger ikke denne personen!");
         }
+        account.followers.remove(this);
     }
 
     boolean isFollowing(TwitterAccount account) {
-        if (this.account == account) {
-            return true;
-        }
-        return false;
+        return account.followers.contains(this);
     }
 
     boolean isFollowedBy(TwitterAccount account) {
-        if (account.account == this) {
-            return true;
-        }
-        return false;
+        return this.followers.contains(account);
     }
 
     public void tweet(String text) {
@@ -88,6 +89,15 @@ public class TwitterAccount {
         return reTweetCount;
     }
 
+    public List<TwitterAccount> getFollowers(Comparator<TwitterAccount> comparator) {
+        if (comparator == null) {
+            return this.followers;
+        }
+        List<TwitterAccount> sortedList = new ArrayList<>();
+        sortedList.sort(comparator);
+        return sortedList;
+    }
+
     @Override
     public String toString() {
         return this.username;
@@ -98,49 +108,16 @@ public class TwitterAccount {
         TwitterAccount chris = new TwitterAccount("ChrisNg");
         TwitterAccount maria = new TwitterAccount("MariaMels");
 
-        jon.follow(chris);
-        //System.out.println(jon.account);
-        //System.out.println(jon.isFollowing(chris));
-
-        jon.unfollow(chris);
-        //System.out.println(jon.isFollowing(chris));
-
-        jon.tweet("Heihei");
-        System.out.println("Jon OG tweet: " + jon.getTweet(1));
-        chris.retweet(jon.getTweet(1));
-        System.out.println("Chris retweet: " + chris.getTweet(1));
-        maria.retweet(chris.getTweet(1));
-        System.out.println("Maria retweet: " + maria.getTweet(1));
-
-        System.out.println(jon.getTweet(1));
-        System.out.println(maria.getTweet(1).getOriginalTweet());
-
-        ArrayList<TwitterAccount> accounts = new ArrayList<>();
-        accounts.add(jon);
-        accounts.add(chris);
-        accounts.add(maria);
-
-        Comparator<TwitterAccount> sortByAlph = new UserNameComparator();
-
-        System.out.println(accounts);
-        accounts.sort(sortByAlph);
+        ArrayList<oving5.twitter.TwitterAccount> followers = new ArrayList<>();
+        followers.add(jon);
+        followers.add(chris);
         
+        FollowersCountComparator compareFollow = new FollowersCountComparator();
 
-
-
-        
-
-        /*
-        System.out.println(account1.isFollowing(account2));
-        account1.unfollow(account2);
-        System.out.println(account2.isFollowing(account1));
-
-
-        account1.tweet("HEi eldste");
-        account1.tweet("HEi nest nyeste");
-        account1.tweet("HEi nyest");
-        System.out.println(account1.getTweet(2).getText());
-        System.out.println(account1.getTweetCount());
-         */
+        System.out.println(followers);
+        chris.follow(jon);
+        // jon.follow(chris);
+        System.out.println(chris.followers);
+        System.out.println(jon.followers);
     }
 }
