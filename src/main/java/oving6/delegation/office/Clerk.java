@@ -20,7 +20,7 @@ public class Clerk implements Employee {
   }
 
   @Override
-  public void printDocument(String document, Clerk clerk1) {
+  public void printDocument(String document) {
     taskCount++;
     printer.printDocument(document, this);
   }
@@ -44,8 +44,8 @@ public class Clerk implements Employee {
     Clerk clerk1 = new Clerk(printer);
     Clerk clerk2 = new Clerk(printer);
 
-    clerk1.printDocument("doc1", clerk1);
-    clerk1.printDocument("doc2", clerk1);
+    clerk1.printDocument("doc1");
+    clerk1.printDocument("doc2");
     System.out.println(clerk1.doCalculations((a, b) -> (a-b), 1, 3));
     System.out.println(clerk1.getTaskCount());
     

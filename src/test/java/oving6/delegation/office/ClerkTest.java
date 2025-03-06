@@ -37,7 +37,7 @@ public class ClerkTest {
 		assertEquals(0, clerk.getTaskCount(), "Teste initialiseringen av antall oppgaver utført");
 
 		// Printer et dokument
-		clerk.printDocument("dokument1", clerk1);
+		clerk.printDocument("dokument1", clerk);
 		assertTrue(printer.getPrintHistory(clerk).contains("dokument1"),
 				"Teste om dokumentet som ble printet ble lagt til i printerhistorikken");
 		assertEquals(1, clerk.getTaskCount(), "Teste antall oppgaver etter 1 utskrift");
@@ -45,7 +45,7 @@ public class ClerkTest {
 				"Teste antall utskrifter i historikken etter 1 utskrift");
 
 		// Printer enda et dokument
-		clerk.printDocument("dokument2", clerk1);
+		clerk.printDocument("dokument2", clerk);
 		assertTrue(printer.getPrintHistory(clerk).contains("dokument2"),
 				"Teste om dokument 2 som ble printet ble lagt til i printerhistorikken");
 		assertEquals(2, clerk.getTaskCount(), "Teste antall oppgaver etter 2 utskrifter");
@@ -58,7 +58,7 @@ public class ClerkTest {
 	public void testTaskCount() {
 		assertEquals(0, clerk.getTaskCount(), "Teste initialiseringen av antall oppgaver utført");
 
-		clerk.printDocument("dokument1", clerk1);
+		clerk.printDocument("dokument1", clerk);
 		assertEquals(1, clerk.getTaskCount(), "Teste antall oppgaver etter 1 utskrift");
 
 		clerk.doCalculations((x, y) -> x + y, 2.0, 3.5);
