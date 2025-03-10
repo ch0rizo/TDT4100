@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HighscoreList {
-  private int maxSize;
-  private List<Integer> results = new ArrayList<>();; 
-  private List<HighscoreListListener> listeners = new ArrayList<>();
+  private final int maxSize;
+  private final List<Integer> results = new ArrayList<>();; 
+  private final List<HighscoreListListener> listeners = new ArrayList<>();
 
   public HighscoreList(int maxSize) {
     this.maxSize = maxSize;
