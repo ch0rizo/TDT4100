@@ -62,8 +62,8 @@ public class StockIndex implements StockListener{
 
   @Override
   public void stockPriceChanged(Stock stock, double oldValue, double newValue) {
-    System.out.println(nameOfIndex + " Index: " + stock.getTicker() + " changed from $" + oldValue + " to $" + newValue
-        + "\n" + "New Index: " + index);
+    System.out.println("Aksjepris endret for " + stock.getTicker() + ". Oppdaterer indeks...");
+    System.out.println("Ny indeks: " + getIndex());
   }
   
   public static void main(String[] args) {
@@ -73,9 +73,11 @@ public class StockIndex implements StockListener{
 
     StockIndex stockIndex = new StockIndex("NasDaq", stock1, stock2, stock3);
     System.out.println(stockIndex.nameOfIndex + ": " + stockIndex.stocks);
+    System.out.println("Index: " + stockIndex.index);
 
     stock1.setPrice(400);
 
     System.out.println(stockIndex.nameOfIndex + ": " + stockIndex.stocks);
+    System.out.println("Index: " + stockIndex.index);
   }
 }
