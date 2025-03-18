@@ -1,5 +1,8 @@
 package oving7.train;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * The class {@code Train} represents a train that consists of one or more train cars.
  * 
@@ -10,6 +13,7 @@ package oving7.train;
 public class Train {
 
     // TODO: Add fields here
+    protected List<TrainCar> trainCar = new ArrayList<>();
 
     /**
      * @param trainCar the train car to check for
@@ -19,7 +23,7 @@ public class Train {
      */
     public boolean contains(TrainCar trainCar) {
         // TODO: Implement this method
-        return false;
+        return this.trainCar.contains(trainCar);
     }
 
     /**
@@ -32,6 +36,9 @@ public class Train {
      */
     public void addTrainCar(TrainCar trainCar) {
         // TODO: Implement this method
+        if (trainCar == null)
+            throw new IllegalArgumentException("Cant be null");
+        this.trainCar.add(trainCar);
     }
 
     /**
@@ -42,7 +49,11 @@ public class Train {
      */
     public int getTotalWeight() {
         // TODO: Implement this method
-        return 0;
+        int totalWeight = 0;
+        for (TrainCar train : trainCar) {
+            totalWeight += train.getTotalWeight();
+        }
+        return totalWeight;
     }
 
     /**
@@ -52,7 +63,13 @@ public class Train {
      */
     public int getPassengerCount() {
         // TODO: Implement this method
-        return 0;
+        int totalPassenger = 0;
+        for (TrainCar train : trainCar) {
+            if (train instanceof PassengerCar passengerCar) {
+                totalPassenger += passengerCar.getPassengerCount();
+            }
+        }
+        return totalPassenger;
     }
 
     /**
@@ -62,7 +79,13 @@ public class Train {
      */
     public int getCargoWeight() {
         // TODO: Implement this method
-        return 0;
+        int totalCargoWeight = 0;
+        for (TrainCar train : trainCar) {
+            if (train instanceof CargoCar cargoCar) {
+                totalCargoWeight += cargoCar.getCargoWeight();
+            }
+        }
+        return totalCargoWeight;
     }
 
     /**

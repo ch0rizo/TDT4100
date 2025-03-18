@@ -10,6 +10,8 @@ package oving7.train;
 public class PassengerCar extends TrainCar {
 
     // TODO: Add fields here
+    protected int deadWeight;
+    protected int passengerCount;
 
     /**
      * Constructor for the passenger car.
@@ -22,6 +24,10 @@ public class PassengerCar extends TrainCar {
      */
     public PassengerCar(int deadWeight, int passengerCount) {
         // TODO: Implement this constructor
+        if (deadWeight < 0 || passengerCount < 0)
+            throw new IllegalArgumentException("Cannot be negative");
+        this.deadWeight = deadWeight;
+        this.passengerCount = passengerCount;
         super(deadWeight);
     }
 
@@ -32,7 +38,7 @@ public class PassengerCar extends TrainCar {
      */
     public int getPassengerCount() {
         // TODO: Implement this method
-        return 0;
+        return this.passengerCount;
     }
 
     /**
@@ -43,6 +49,9 @@ public class PassengerCar extends TrainCar {
      */
     public void setPassengerCount(int passengerCount) {
         // TODO: Implement this method
+        if (passengerCount < 0)
+            throw new IllegalArgumentException("Cannot be negative");
+        this.passengerCount = passengerCount;
     }
 
     @Override
@@ -51,7 +60,8 @@ public class PassengerCar extends TrainCar {
         // passenger weighs 80 kg
 
         // TODO: Implement this method
-        return 0;
+        int totalWeight = deadWeight + (80 * this.passengerCount);
+        return totalWeight;
     }
 
     @Override

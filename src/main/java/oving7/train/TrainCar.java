@@ -6,6 +6,7 @@ package oving7.train;
 public class TrainCar {
 
     // TODO: Add fields here
+    protected int deadWeight;
 
     /**
      * Constructor for a train car.
@@ -17,6 +18,8 @@ public class TrainCar {
      */
     public TrainCar(int deadWeight) {
         // TODO: Implement this constructor
+        if (deadWeight < 0) throw new IllegalArgumentException("Deadweight can not be negative");
+        this.deadWeight = deadWeight;
     }
 
     /**
@@ -28,6 +31,8 @@ public class TrainCar {
      */
     public void setDeadWeight(int deadWeight) {
         // TODO: Implement this method
+        if (deadWeight < 0) throw new IllegalArgumentException("Deadweight can not be negative");
+        this.deadWeight = deadWeight;
     }
 
     /**
@@ -38,7 +43,7 @@ public class TrainCar {
      */
     public int getDeadWeight() {
         // TODO: Implement this method
-        return 0;
+        return this.deadWeight;
     }
 
     /**
@@ -50,7 +55,7 @@ public class TrainCar {
      */
     public int getTotalWeight() {
         // TODO: Implement this method
-        return 0;
+        return this.deadWeight;
     }
 
     /**

@@ -6,6 +6,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import oving7.savingsaccount.Account;
+
 public class AccountTest {
 
 	private Account account;
