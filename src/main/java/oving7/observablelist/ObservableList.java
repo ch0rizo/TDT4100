@@ -13,11 +13,11 @@ public abstract class ObservableList {
   }
   
   public int size() {
-    return elements.size();
+    return this.elements.size();
   }
 
   public Object getElement(int position) {
-    return elements.get(position);
+    return this.elements.get(position);
   }
 
   public abstract boolean acceptsElement(Object object);
@@ -48,10 +48,14 @@ public abstract class ObservableList {
   }
 
   public void removeElement(int position) {
-    if (position > size())
+    if (position >= size())
       throw new IndexOutOfBoundsException("No position in list");
 
     this.elements.remove(position);
+
+    for (ObservableListListener listener : listeners) {
+        listener.listChanged(this, position);
+    }
   }
 
   public void addObservableListListener(ObservableListListener listener) {

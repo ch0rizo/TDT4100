@@ -14,32 +14,31 @@ public class ObservableHighscoreList extends ObservableList {
 
   public void addResult(int result) {
     int position = findPosition(result);
-    addElement(position, result);
 
-    if (this.elements.size() > maxSize) {
-      this.elements.remove(this.elements.size() - 1);
-
-      if (position >= elements.size()) { // Viktig å ha med dette fordi listener må være sist posisjon.
-        position = -1; // fordi hvis den havner utfor listen skal posisjon være lik -1
-      }
+    if (size() >= maxSize && position == size()) {
+      return;
     }
-    
+
+    elements.add(position, result);
+
     for (ObservableListListener listener : listeners) {
       listener.listChanged(this, position);
+    }
+
+    if (size() > maxSize) {
+      elements.remove(size() - 1);
     }
   }
 
   // Hjelpemetode for å finne posisjon
   private int findPosition(int result) {
-    if (acceptsElement(result)) {
-      for (int i = 0; i < elements.size(); i++) {
-        if (this.elements.get(i) > result) {
-          return i;
-        }
+    for (int i = 0; i < elements.size(); i++) {
+      Integer current = (Integer) getElement(i);
+      if (current != null && current > result) {
+        return i;
       }
-      return elements.size();
     }
-    return 0;
+    return size();
   }
 
   @Override
