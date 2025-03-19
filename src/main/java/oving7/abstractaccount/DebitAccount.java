@@ -12,4 +12,24 @@ package oving7.abstractaccount;
 public class DebitAccount extends AbstractAccount {
 
     // TODO: Override abstract method here
+    public DebitAccount() {
+    }
+
+    @Override
+    public void internalWithdraw(double amount) {
+        if (this.balance - amount < 0)
+            throw new IllegalArgumentException("Not enough balance");
+
+        this.balance -= amount;
+    }
+
+    public static void main(String[] args) {
+        DebitAccount dAccount = new DebitAccount();
+
+        System.out.println(dAccount.getBalance());
+        dAccount.deposit(1000);
+        System.out.println(dAccount.getBalance());
+        dAccount.internalWithdraw(9991);
+        System.out.println(dAccount.getBalance());
+    }
 }

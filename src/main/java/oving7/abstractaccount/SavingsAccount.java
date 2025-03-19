@@ -12,6 +12,8 @@ package oving7.abstractaccount;
 public class SavingsAccount extends AbstractAccount {
 
     // TODO: Add fields here
+    private int withdrawls;
+    private double fee;
 
     /**
      * Initializes a new {@code SavingsAccount} with the specified number of withdrawals and fee.
@@ -22,7 +24,29 @@ public class SavingsAccount extends AbstractAccount {
      */
     public SavingsAccount(int withdrawals, double fee) {
         // TODO: Implement this constructor
+        if (withdrawals < 0 || fee < 0)
+            throw new IllegalArgumentException("None can be negative");
+
+        this.withdrawls = withdrawals;
+        this.fee = fee;
     }
 
     // TODO: Override abstract method here
+    @Override
+    public void internalWithdraw(double amount) {
+        if (amount + this.fee > this.balance) throw new IllegalArgumentException("Too much to withdraw, you poor!");
+
+        else if (withdrawls == 0 && this.balance < fee)
+            throw new IllegalArgumentException("No more withdrawls and cant pay for more withdrawls");
+
+        else if (withdrawls == 0) {
+            this.balance -= this.fee;
+            this.balance -= amount;
+        }
+
+        else {
+            this.balance -= amount;
+            this.withdrawls--;
+        }
+    }
 }

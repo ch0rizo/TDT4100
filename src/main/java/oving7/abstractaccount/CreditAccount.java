@@ -12,6 +12,7 @@ package oving7.abstractaccount;
 public class CreditAccount extends AbstractAccount {
 
     // TODO: Add fields here
+    private double creditLine;
 
     /**
      * Initializes a new {@code CreditAccount} with the specified credit line.
@@ -21,9 +22,16 @@ public class CreditAccount extends AbstractAccount {
      */
     public CreditAccount(double creditLine) {
         // TODO: Implement this constructor
+        this.creditLine = creditLine;
     }
 
     // TODO: Override abstract method here
+    @Override
+    public void internalWithdraw(double amount) {
+        if (this.balance - amount < -this.creditLine) throw new IllegalArgumentException("Credit Line is negative");   
+
+        this.balance -= amount;
+    }
 
     /**
      * @return the credit line
@@ -32,7 +40,7 @@ public class CreditAccount extends AbstractAccount {
      */
     public double getCreditLine() {
         // TODO: Implement this method
-        return 0.0;
+        return this.creditLine;
     }
 
     /**
@@ -46,5 +54,10 @@ public class CreditAccount extends AbstractAccount {
      */
     public void setCreditLine(double creditLine) {
         // TODO: Implement this method
+        if (creditLine < 0)
+            throw new IllegalArgumentException("Error");
+        if (creditLine > this.balance && this.balance < 0) throw new IllegalStateException("Error");
+
+        this.creditLine = creditLine;
     }
 }

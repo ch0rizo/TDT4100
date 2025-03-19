@@ -15,6 +15,11 @@ public abstract class AbstractAccount {
     // either be set to 0.0 by default or in the constructor
 
     // TODO: Add fields and potentially a constructor here
+    protected double balance;
+
+    public AbstractAccount() {
+        this.balance = 0.0;
+    }
 
     /**
      * Decreases the account balance by the specified amount. Note that the rules for withdrawals
@@ -25,6 +30,7 @@ public abstract class AbstractAccount {
      * @throws IllegalArgumentException if the amount cannot be withdrawn
      */
     // TODO: Define abstract method {@code void internalWithdraw} here
+    public abstract void internalWithdraw(double amount);
 
     /**
      * Increases the account balance by the specified amount.
@@ -34,6 +40,10 @@ public abstract class AbstractAccount {
      */
     public void deposit(double amount) {
         // TODO: Implement this method
+        if (amount < 0)
+            throw new IllegalArgumentException("Amount cannot be negative");
+
+        this.balance += amount;
     }
 
     /**
@@ -45,6 +55,10 @@ public abstract class AbstractAccount {
      */
     public void withdraw(double amount) {
         // TODO: Implement this method
+        if (amount < 0)
+            throw new IllegalArgumentException("Amount cannot be negative");
+
+        internalWithdraw(amount);
     }
 
     /**
@@ -52,6 +66,6 @@ public abstract class AbstractAccount {
      */
     public double getBalance() {
         // TODO: Implement this method
-        return 0.0;
+        return this.balance;
     }
 }
